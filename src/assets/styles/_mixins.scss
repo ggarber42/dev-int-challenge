@@ -1,0 +1,38 @@
+@mixin for-size($size) {
+     @if $size == phone-only {
+       @media (max-width: 599px) { @content; }
+     } @else if $size == tablet {
+       @media (max-width: 1480px) { @content; }
+     }
+     // } @else if $size == tablet-landscape-up {
+     //   @media (min-width: 900px) { @content; }
+     // } @else if $size == desktop-up {
+     //   @media (min-width: 1200px) { @content; }
+     // } @else if $size == big-desktop-up {
+     //   @media (min-width: 1800px) { @content; }
+     // }
+   }
+@mixin header-border($width: 160px){
+  &::after, &::before{
+    content: '';
+    position: relative;
+    top: -5px;
+    border-bottom: 1px solid #707070;
+    width: calc((75vw - $width)/2);
+    display: inline-block;
+    margin: 0 .25em;
+
+  }
+}
+
+@mixin button{
+  border: $input-border;
+  border-radius: $input-border-radius;
+  background-color: $white;
+}
+
+@mixin buttonHover{
+  transform: scale(1);
+  background-color: $primary-color;
+  color: $white;
+}
