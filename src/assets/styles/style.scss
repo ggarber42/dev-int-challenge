@@ -136,6 +136,9 @@ html{
                                 &::after{
                                   content: '^';
                                   right: 0;
+                                  @include for-size(phone-only){
+                                    right: -10px;
+                                  }
                                   position: absolute;
                                   font-size: 1.5rem;
                                 }
@@ -146,7 +149,7 @@ html{
 
                             p{
                                  font-size: $body-text-size;
-                                 max-width: 60%;
+                                //  max-width: 60%;
                                  @include for-size(tablet){
                                     max-width: 100%;
                                 }
@@ -162,6 +165,7 @@ html{
                       @include for-size(phone-only){
                         max-width: 600px;
                         margin: 0;
+                        min-width: 0;
                       }
                          *{
                               margin: .35em 0;
