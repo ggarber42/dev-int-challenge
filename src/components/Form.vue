@@ -15,22 +15,37 @@
       </div>
     </div>
 
-    <form action="">
+    <form @submit.prevent="submitData">
       <label for="name">Seu nome:</label>
-      <input type="text">
-      <label for="name">E-mail</label>
-      <input type="text">
+      <input
+        type="text"
+        required
+      >
+      <label for="name" >E-mail</label>
+      <input
+        type="text"
+        required
+        v-model="email"
+      >
       <label for="name">CPF:</label>
-      <input type="text">
+      <input
+        type="tel"
+        v-model="cpf"
+        v-maska="'###.###.###-##'"
+        required
+        @keyup="inputChecker"
+      >
       <div class="gender-radio">
         <input
           type="radio"
           name="gender"
+          required
         >
         <label for="name">Masculino</label>
         <input
           type="radio"
           name="gender"
+          required
         >
         <label for="name">Feminino</label>
       </div>
@@ -44,7 +59,31 @@
 </template>
 
 <script>
+import inputValidatorMixins from '../mixins/inputValidatorMixins'
+
 export default {
-  name: 'Form'
+  name: 'Form',
+  mixins: [inputValidatorMixins],
+  methods: {
+    /**
+     * Submits data.
+     */
+    submitData () {
+      if (this.emailValidator() && this.cpfValidator()) {
+        console.log('sending Data')
+      }
+    },
+    /**
+     * Check if there is an incorrect number.
+     *
+     * @param {object} event - Clicking event.
+     */
+    inputChecker (event) {
+      const isNotNumber = event.target.value.length === 0
+      if (isNotNumber) {
+        console.log('Insira um número')
+      }
+    }
+  }
 }
 </script>

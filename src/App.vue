@@ -1,9 +1,11 @@
 <template>
-  <Header />
-  <Form />
-  <ProductGrid />
-  <Newsletter />
-  <Footer />
+  <div>
+    <Header />
+    <Form />
+    <ProductGrid />
+    <Newsletter />
+    <Footer />
+  </div>
 </template>
 
 <script>

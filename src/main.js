@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-import './assets/styles/style.scss';
+import Maska from 'maska'
+import './assets/styles/style.scss'
 
-createApp(App).mount('#app')
+createApp(App).use(Maska).mount('#app')

@@ -170,7 +170,7 @@ html{
                          *{
                               margin: .35em 0;
                          }
-                         input[type="text"]{
+                         input[type="text"], input[type="tel"]{
                               background: $white 0% 0% no-repeat padding-box;
                               border: $input-border;
                               border-radius: $input-border-radius;
@@ -178,7 +178,7 @@ html{
                               opacity: 1;
                               padding: .75em 1em;
                          }
-                         .gender-radio{
+                        .gender-radio{
                            margin: 2vh 0;
                          }
                          input[type="radio"]{
@@ -193,6 +193,13 @@ html{
                           border-radius: $input-border-radius;
                           background-color: $white;
                           padding: 1em 1.5em;
+                          transition: all 0.5s ease-out;
+                          transform: scale(1);
+                          &:hover{
+                            transform: scale(1.04);
+                            background-color: $primary-color;
+                            color: $white;
+                          }
                          }
                     }
                }
@@ -377,8 +384,8 @@ html{
                     margin-bottom: .5em;
                   }
                   input{
-                    padding: .75vh  0;
-                    width: 20vw;
+                    padding: .75vh 0.2vw;
+                    width: 17vw;
                     @include for-size(tablet){
                       width: 60vw;
                       max-width: 350px;

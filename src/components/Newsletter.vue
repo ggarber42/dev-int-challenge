@@ -7,25 +7,50 @@
     <div class="main">
       <div class="input-box">
         <label for="name">Nome do seu amigo:</label>
-        <input type="text">
+        <input
+          type="text"
+          required
+          v-model="friendsName"
+        >
       </div>
       <div class="input-box">
         <label for="name">E-mail dele</label>
-        <input type="text">
+        <input
+          type="text"
+          required
+          v-model="email"
+        >
       </div>
     </div>
     <div class="footer">
       <button
-        v-if="nextPage !== ''"
-        @click="addNextPageProducts"
+        @click="submitData"
       >Enviar agora</button>
     </div>
   </section>
 </template>
 
 <script>
+import inputValidatorMixins from '../mixins/inputValidatorMixins'
+
 export default {
-  name: 'Newsletter'
+  name: 'Newsletter',
+  mixins: [inputValidatorMixins],
+  data: function () {
+    return {
+      friendsName: ''
+    }
+  },
+  methods: {
+    /**
+     * Submits data.
+     */
+    submitData () {
+      if (this.emailValidator() && this.friendsName !== '') {
+        console.log('sending Data')
+      }
+    }
+  }
 }
 </script>
 

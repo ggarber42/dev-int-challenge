@@ -35,6 +35,11 @@ export default {
     }
   },
   methods: {
+    /**
+     * Fetch products from restful api.
+     *
+     * @param {string} url
+     */
     fetchProducts (url = this.firstPage) {
       fetch(url)
         .then(res => {
@@ -49,6 +54,9 @@ export default {
         })
         .catch(error => console.error(error))
     },
+    /**
+     * Fetch products from next page.
+     */
     addNextPageProducts () {
       this.fetchProducts(`${this.nextPage}`)
     }
