@@ -394,7 +394,7 @@ html{
                 }
               }
             }
-            .footer{
+            .submit{
               text-align: center;
               button{
                 padding: .75em 3em;
@@ -408,7 +408,7 @@ html{
             color: $white;
             background: $primary-color;
             position: relative;
-            height: 15vh;
+            height: 95px;
             h4{
               margin: 0 auto;
               text-align: center;
@@ -420,7 +420,7 @@ html{
               border-left: 100vw solid transparent;
               width: 0;
               position: absolute;
-              top: -98px;
+              top: -95px;
               z-index: -1;
             }
           }
