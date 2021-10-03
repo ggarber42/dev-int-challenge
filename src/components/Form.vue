@@ -22,15 +22,12 @@
         required
       >
       <label for="name" >E-mail</label>
-      <input
-        type="text"
-        required
+      <InputEmail
         v-model="email"
-      >
-      <small
-        class="error"
-        :style="[isEmailValid ? {'visibility':'hidden'} : {'visibility':'visible'}]"
-      >Digite um email válido</small>
+        :emailValue="email"
+        @update:emailValue="email = $event"
+        :isEmailValid="isEmailValid"
+      />
       <label for="name">CPF:</label>
       <input
         type="tel"
@@ -68,12 +65,15 @@
 
 <script>
 import inputValidatorMixin from '../mixins/inputValidatorMixin'
+import InputEmail from './InputEmail.vue'
 
 export default {
   name: 'Form',
+  components: { InputEmail },
   mixins: [inputValidatorMixin],
   data: function () {
     return {
+      email: '',
       cpf: '',
       isEmailValid: true,
       isCpfValid: true,
@@ -116,6 +116,7 @@ export default {
      * Submits data.
      */
     submitData () {
+      console.log(this.email)
       this.isEmailValid = this.emailValidator()
       this.isCpfValid = this.cpfValidator()
       if (this.isEmailValid && this.isCpfValid) {
