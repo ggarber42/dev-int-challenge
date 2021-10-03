@@ -16,11 +16,12 @@
         </div>
         <div class="input-box">
           <label for="name">E-mail dele</label>
-          <input
-            type="text"
-            required
+          <InputEmail
             v-model="email"
-          >
+            :emailValue="email"
+            @update:emailValue="email = $event"
+            :isEmailValid="isEmailValid"
+          />
         </div>
       </div>
       <div class="submit">
@@ -31,13 +32,18 @@
 </template>
 
 <script>
+import InputEmail from './InputEmail.vue'
+
 import inputValidatorMixins from '../mixins/inputValidatorMixin'
 
 export default {
   name: 'Newsletter',
+  components: { InputEmail },
   mixins: [inputValidatorMixins],
   data: function () {
     return {
+      email: '',
+      isEmailValid: true,
       friendsName: ''
     }
   },
@@ -46,6 +52,7 @@ export default {
      * Submits data.
      */
     submitData () {
+      this.isEmailValid = this.emailValidator()
       if (this.emailValidator() && this.friendsName !== '') {
         console.log('sending Data')
       }

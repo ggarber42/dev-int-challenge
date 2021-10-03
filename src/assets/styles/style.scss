@@ -29,6 +29,12 @@ html{
             color: $error;
             font-size: .65rem;
             min-height: 11px;
+            margin: .35em 0;
+          }
+
+          .input-email {
+            display: flex;
+            flex-direction: column;
           }
 
           header{
