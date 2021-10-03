@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import inputValidatorMixins from '../mixins/inputValidatorMixins'
+import inputValidatorMixins from '../mixins/inputValidatorMixin'
 
 export default {
   name: 'Newsletter',

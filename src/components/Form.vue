@@ -27,14 +27,22 @@
         required
         v-model="email"
       >
+      <small
+        class="error"
+        :style="[isEmailValid ? {'visibility':'hidden'} : {'visibility':'visible'}]"
+      >Digite um email válido</small>
       <label for="name">CPF:</label>
       <input
         type="tel"
         v-model="cpf"
         v-maska="'###.###.###-##'"
         required
-        @keyup="inputChecker"
+        @keyup="cpfInputChecker"
       >
+      <small
+        class="error"
+        :style="[isCpfValid && isNumberInput ? {'visibility':'hidden'} : {'visibility':'visible'}]"
+      >{{ cpfNumberWarning }} {{ cpfValidWarning }}</small>
       <div class="gender-radio">
         <input
           type="radio"
@@ -59,29 +67,59 @@
 </template>
 
 <script>
-import inputValidatorMixins from '../mixins/inputValidatorMixins'
+import inputValidatorMixin from '../mixins/inputValidatorMixin'
 
 export default {
   name: 'Form',
-  mixins: [inputValidatorMixins],
+  mixins: [inputValidatorMixin],
+  data: function () {
+    return {
+      cpf: '',
+      isEmailValid: true,
+      isCpfValid: true,
+      isNumberInput: true,
+      cpfValidWarning: '',
+      cpfNumberWarning: ''
+    }
+  },
   methods: {
+    /**
+     * Check if cpf is valid.
+     *
+     * @returns {boolean}
+     */
+    cpfValidator () {
+      if (this.cpf.length === 14) {
+        this.cpfValidWarning = ''
+        return true
+      }
+      this.cpfValidWarning = 'Digite um cpf válido'
+      return false
+    },
+    /**
+     * Check if input is not number.
+     *
+     * @param {object} event - Clicking event.
+     */
+    cpfInputChecker (event) {
+      const isTabKey = event.key === 'Tab'
+      const isNumber = /\d/.test(event.key)
+      if (!isNumber && !isTabKey) {
+        this.cpfNumberWarning = 'Digite um caracter válido.'
+        this.isNumberInput = false
+      } else {
+        this.cpfNumberWarning = ''
+        this.isNumberInput = true
+      }
+    },
     /**
      * Submits data.
      */
     submitData () {
-      if (this.emailValidator() && this.cpfValidator()) {
+      this.isEmailValid = this.emailValidator()
+      this.isCpfValid = this.cpfValidator()
+      if (this.isEmailValid && this.isCpfValid) {
         console.log('sending Data')
-      }
-    },
-    /**
-     * Check if there is an incorrect number.
-     *
-     * @param {object} event - Clicking event.
-     */
-    inputChecker (event) {
-      const isNotNumber = event.target.value.length === 0
-      if (isNotNumber) {
-        console.log('Insira um número')
       }
     }
   }

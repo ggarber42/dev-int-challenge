@@ -25,6 +25,12 @@ html{
             }
           }
 
+          .error{
+            color: $error;
+            font-size: .65rem;
+            min-height: 11px;
+          }
+
           header{
                background: $primary-color;
                position: relative;
