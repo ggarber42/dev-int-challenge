@@ -55,6 +55,7 @@ export default {
       this.isEmailValid = this.emailValidator()
       if (this.emailValidator() && this.friendsName !== '') {
         console.log('sending Data')
+        // todo
       }
     }
   }

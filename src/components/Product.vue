@@ -30,6 +30,9 @@ export default {
         .toFixed(2)
         .toString()
         .replace('.', ',')
+    },
+    buyFeedback () {
+      // Todo
     }
   }
 }

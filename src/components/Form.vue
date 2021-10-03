@@ -121,6 +121,7 @@ export default {
       this.isCpfValid = this.cpfValidator()
       if (this.isEmailValid && this.isCpfValid) {
         console.log('sending Data')
+        // Todo
       }
     }
   }
