@@ -11,13 +11,29 @@
         <div class="price">Por R${{ formatCurrency(product.price) }}</div>
         <div class="installments">ou {{ product.installments.count }} x R${{ formatCurrency(product.installments.value) }}</div>
       </div>
-      <button>Comprar</button>
+      <button @click="buyFeedback">Comprar</button>
     </div>
+    <Modal ref="modalName">
+      <template v-slot:body>
+        <h1>Produto adicionado</h1>
+      </template>
+      <template v-slot:footer>
+        <div>
+          <button
+            class="footer-btn"
+            @click="$refs.modalName.closeModal()"
+          >OK</button>
+        </div>
+      </template>
+    </Modal>
   </div>
 </template>
 
 <script>
+import Modal from './Modal.vue'
+
 export default {
+  components: { Modal },
   props: {
     product: {
       type: Object,
@@ -32,7 +48,7 @@ export default {
         .replace('.', ',')
     },
     buyFeedback () {
-      // Todo
+      this.$refs.modalName.openModal()
     }
   }
 }

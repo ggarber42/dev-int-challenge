@@ -15,6 +15,8 @@ html{
                font-size: $title-size;
           }
 
+
+
           button{
             @include button;
             transition: all 0.5s ease-out;
@@ -310,6 +312,36 @@ html{
                       }
                       .installments{
                         font-size: $body-text-size;
+                      }
+                    }
+                    .modal{
+                      .modal__footer{
+                        &>div{
+                          display: flex;
+                          justify-content: center;
+                        }
+                      }
+                      h1{
+                        text-align: center;
+                      }
+                      button {
+                        transform: none;
+                        font-size: 1.25rem;
+                        &.footer-btn{
+                          max-width: 60%;
+                          &:hover{
+                            background-color: $primary-color;
+                            color: $white;
+                          }
+                        }
+                        &.modal__close{
+                          transition: none;
+                          border: none;
+                          width: 20px;
+                          height: 20px;
+                          padding: 0;
+                          font-weight: bolder;
+                        }
                       }
                     }
                     button{
