@@ -19,6 +19,7 @@
       <label for="name">Seu nome:</label>
       <input
         type="text"
+        v-model="name"
         required
       >
       <label for="name" >E-mail</label>
@@ -42,12 +43,14 @@
       >{{ cpfNumberWarning }} {{ cpfValidWarning }}</small>
       <div class="gender-radio">
         <input
+          ref="genderRadio1"
           type="radio"
           name="gender"
           required
         >
         <label for="name">Masculino</label>
         <input
+          ref="genderRadio2"
           type="radio"
           name="gender"
           required
@@ -59,20 +62,31 @@
         value="Enviar"
       >
     </form>
-
+    <Modal ref="modalName">
+      <template v-slot:header>
+        <h1>Email enviado</h1>
+      </template>
+      <template v-slot:footer>
+        <div>
+          <button @click="$refs.modalName.closeModal()">OK</button>
+        </div>
+      </template>
+    </Modal>
   </section>
 </template>
 
 <script>
 import inputValidatorMixin from '../mixins/inputValidatorMixin'
 import InputEmail from './InputEmail.vue'
+import Modal from './Modal.vue'
 
 export default {
   name: 'Form',
-  components: { InputEmail },
+  components: { InputEmail, Modal },
   mixins: [inputValidatorMixin],
   data: function () {
     return {
+      name: '',
       email: '',
       cpf: '',
       isEmailValid: true,
@@ -116,12 +130,15 @@ export default {
      * Submits data.
      */
     submitData () {
-      console.log(this.email)
       this.isEmailValid = this.emailValidator()
       this.isCpfValid = this.cpfValidator()
       if (this.isEmailValid && this.isCpfValid) {
-        console.log('sending Data')
-        // Todo
+        this.$refs.genderRadio1.checked = false
+        this.$refs.genderRadio2.checked = false
+        this.name = ''
+        this.email = ''
+        this.cpf = ''
+        this.$refs.modalName.openModal()
       }
     }
   }
