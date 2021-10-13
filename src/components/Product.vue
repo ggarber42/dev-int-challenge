@@ -11,7 +11,7 @@
         <div class="price">Por R${{ formatCurrency(product.price) }}</div>
         <div class="installments">ou {{ product.installments.count }} x R${{ formatCurrency(product.installments.value) }}</div>
       </div>
-      <button @click="buyFeedback">Comprar</button>
+      <button v-on="!isEmail ?  {click: buyFeedback } : {}">Comprar</button>
     </div>
     <Modal ref="modalName">
       <template v-slot:body>
@@ -38,6 +38,10 @@ export default {
     product: {
       type: Object,
       required: true
+    },
+    isEmail: {
+      type: Boolean,
+      required: false
     }
   },
   methods: {

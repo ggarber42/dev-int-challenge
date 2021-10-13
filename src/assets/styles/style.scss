@@ -437,6 +437,64 @@ html{
                   }
                 }
               }
+              .modal{
+                .modal__header{
+                  flex-direction: column;
+                  color: $white;
+                  background-color: $primary-color;
+                  align-items: center;
+                  h3{
+                    font-weight: 200;
+                  }
+                  h2, p{
+                    font-weight: 100;
+                    text-align: center;
+                    width: 80%;
+                  }
+                  .modal__close{
+                    display: none;
+                  }
+                }
+                .modal__body{
+                  .product-description{
+                    max-width: 80%;
+                  }
+                  .main{
+                    width: 80%;
+                    margin-top: 1em;
+                    .product{
+                      @include for-size(tablet){
+                        margin: 1em 0;
+                      }
+                      padding: 0 .1em;
+                      .product-media{
+                        text-align: center;
+                      }
+                      .product-actions{
+                        font-size: .75rem;
+                        .price{
+                          font-weight: bolder;
+                          margin: 1em 0;
+                          font-size: .95rem;
+                        }
+                        button{
+                          width: 100%;
+                          margin: 1em auto 0;
+                          display: block;
+                        }
+                      }
+                    }
+                  }
+                  .footer{
+                    margin: 0 auto;
+                  }
+                }
+                .modal__footer{
+                  color: $white;
+                  background-color: $primary-color;
+                  text-align: center;
+                }
+              }
             }
             .submit{
               text-align: center;
