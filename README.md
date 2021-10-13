@@ -17,6 +17,12 @@ O desafio contempla:
 - Validações no inputs dos formulários
 - Feedbacks ao usuário
 
+Faltou:
+- Faixa diagonal no topo e rodapé da página de email
+
+Dificuldades:
+- Acertar o CSS da parte diagonal no topo e rodapé
+
 ---
 
 ## Rodando Localmente
