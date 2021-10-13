@@ -234,7 +234,7 @@ html{
                       position: relative;
                       top: -5px;
                       border-bottom: 1px solid #707070;
-                      width: calc((63vw 380px)/2);
+                      width: calc((63vw - 380px)/2);
                       display: inline-block;
                       margin: 0 .25em;
                       @include for-size(tablet){
